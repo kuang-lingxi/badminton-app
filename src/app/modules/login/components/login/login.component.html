@@ -1,1 +1,25 @@
-<p>login works!</p>
+<div class="main">
+  <Navbar [mode]="'light'">
+    登陆
+  </Navbar>
+  <div class="title">
+    欢迎登陆无羽伦比
+  </div>
+  <div class="avatar"> 
+    <img src="assets/xiao.jpg" alt="" class="img">
+  </div>
+  
+  <div class="am-demo-page">
+    <div class="am-list" style="margin:30px 0;">
+      <div class="am-list-body">
+        <InputItem [placeholder]="'no label'" content="用户名"></InputItem>
+        <InputItem [placeholder]="'title can be icon，image or text'" content="密码"></InputItem>
+      </div>
+    </div>
+  </div>
+  <div Button [type]="'primary'" [inline]="true" [size]="'small'" class="center">登陆</div>
+  <div style="text-align: center;">忘记了密码?</div>
+  <div class="footer">
+    <a href="">还没有账号?点我注册</a>
+  </div>
+</div>
