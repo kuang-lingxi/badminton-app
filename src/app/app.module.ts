@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
 
 @NgModule({
   declarations: [
@@ -17,8 +16,7 @@ import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule,
-    NgZorroAntdMobileModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
