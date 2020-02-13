@@ -29,7 +29,8 @@
             ],
             "styles": [
               "node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.min.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/iconfont/iconfont.css"
             ],
             "scripts": []
           },
