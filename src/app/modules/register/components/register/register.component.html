@@ -1,1 +1,31 @@
-<p>register works!</p>
+<div class="main">
+  <Navbar [mode]="'light'">
+    注册
+  </Navbar>
+  <div class="title">
+    欢迎注册无羽伦比
+  </div>
+  <div class="am-demo-page">
+    <div class="am-list" style="margin:30px 0;">
+      <div class="am-list-body">
+        <InputItem [placeholder]="'no label'" content="用户名"></InputItem>
+        <InputItem [placeholder]="'title can be icon，image or text'" content="密码"></InputItem>
+        <InputItem [placeholder]="'title can be icon，image or text'" content="重复输入"></InputItem>
+        <InputItem [placeholder]="'title can be icon，image or text'" content="邮箱"></InputItem>
+        <InputItem [placeholder]="'title can be icon，image or text'" content="姓名"></InputItem>
+        <ListItem
+          Picker
+          [extra]="sexText"
+          [arrow]="'horizontal'"
+          [data]="sexData"
+          [(ngModel)]="sex"
+          (ngModelChange) = "sexChange($event)"
+        >
+          性别
+        </ListItem>
+      </div>
+    </div>
+  </div>
+  <div Button [type]="'primary'" [inline]="true" [size]="'small'" class="center">注册</div>
+  <div style="text-align: center;">已有账号？点我登陆</div>
+</div>

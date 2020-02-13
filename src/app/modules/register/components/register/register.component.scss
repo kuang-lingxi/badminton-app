@@ -1,0 +1,36 @@
+.main {
+  position: relative;
+  height: 100vh;
+}
+.title {
+  margin: 20px 0;
+  text-align: center;
+}
+
+
+
+.center {
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 20px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding:5px 0;
+
+  text-align: center;
+}
+
+.am-image-picker-list .am-image-picker-item {
+  position: absolute;
+  top: 50%;
+  left: 150%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+  height: 100%;
+}
