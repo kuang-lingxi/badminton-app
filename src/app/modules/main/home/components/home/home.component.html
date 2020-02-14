@@ -1,1 +1,71 @@
-<p>home works!</p>
+
+<Carousel
+  [infinite]="true"
+  [vertical]="false"
+  [selectedIndex]="1"
+  [autoplay]="true"
+  [dotStyle]="{'margin-bottom': '5px'}"
+  [dotActiveStyle]="{'margin-bottom': '5px'}"
+>
+  <CarouselSlide *ngFor="let item of state.data">
+    <div style="display: inline-block; width: 100%;" [ngStyle]="{ height: state.imgHeight }">
+      <img
+        src="https://zos.alipayobjects.com/rmsportal/{{ item }}.png"
+        style=" pointer-events: none; width: 100%;"
+      />
+    </div>
+  </CarouselSlide>
+</Carousel>
+
+<div class="notice">
+  <h4 class="title">
+    公告
+  </h4>
+
+  <List [className]="'my-list'" [renderHeader]="renderHeader">
+    <ng-container *ngFor="let notice of noticeList">
+      <ListItem [thumb]="notice.top === 1 ? top : normal" [extra]="'查看'" (click)="modal[notice.id]=true">{{notice.title}}</ListItem>
+      <Modal [(ngModel)]="modal[notice.id]" [transparent]="true" [title]="notice.title">
+        <div [ngStyle]="{ height: 100, overflow: 'scroll' }">
+          <span>{{notice.content}}</span>          
+          <div class="footer">{{notice.time | date:"yyyy/MM/dd hh:mm:ss"}}</div>
+        </div>
+      </Modal>
+    </ng-container>
+  </List>
+  <ng-template #top>
+    <span class="iconfont icon-zhiding"></span>
+  </ng-template>
+
+  <ng-template #normal>
+    <span class="iconfont icon-gonggao"></span>
+  </ng-template>
+</div>
+
+<div class="match-list">
+  <h4 class="title">进行中的赛事</h4>
+  <Accordion (onChange)="onChange($event)">
+    <AccordionPanel
+      *ngFor="let item of accordions; let i = index"
+      [key]="i"
+      [header]="item.title"
+    >
+      <List className="my-list">
+        <ListItem>
+          <a href="">
+            介绍：{{ item.introduce }}
+          </a>
+        </ListItem>
+        <ListItem>
+          时间：{{ item.beginTime | date:"yyyy/MM/dd" }} - {{ item.endTime | date:"yyyy/MM/dd" }}
+        </ListItem>
+      </List>
+    </AccordionPanel>
+  </Accordion>
+  <ng-template #title1>
+    <div>Title 1</div>
+  </ng-template>
+</div>
+<div class="match-list">
+
+</div>
