@@ -7,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
+  productList: any = [
+    {id: 0, name: '手胶', value: 10, imgUrl: 'assets/xiao.jpg'},
+    {id: 0, name: '手胶', value: 10, imgUrl: 'assets/xiao.jpg'},
+    {id: 0, name: '手胶', value: 10, imgUrl: 'assets/xiao.jpg'},
+    {id: 0, name: '手胶', value: 10, imgUrl: 'assets/xiao.jpg'},
+    {id: 0, name: '手胶', value: 10, imgUrl: 'assets/xiao.jpg'},
+    {id: 0, name: '手胶', value: 10, imgUrl: 'assets/xiao.jpg'},
+    {id: 0, name: '手胶', value: 10, imgUrl: 'assets/xiao.jpg'}
+  ]
+
   constructor() { }
 
   ngOnInit() {

@@ -4,10 +4,11 @@ import { SelfCommonModule } from '../../common/common.module';
 
 import { ShopeRoutingModule } from './shope-routing.module';
 import { ListComponent } from './components/list/list.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 
 @NgModule({
-  declarations: [ListComponent],
+  declarations: [ListComponent, ProductCardComponent],
   imports: [
     CommonModule,
     ShopeRoutingModule,

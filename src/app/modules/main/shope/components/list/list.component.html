@@ -1,1 +1,9 @@
-<p>list works!</p>
+<div>
+  <SearchBar [placeholder]="'Search'" [maxLength]="8"></SearchBar>
+  <app-product-card 
+    *ngFor="let item of productList"
+    [name]="item.name"
+    [value]="item.value"
+    [imgUrl]="item.imgUrl"
+  ></app-product-card>
+</div>
