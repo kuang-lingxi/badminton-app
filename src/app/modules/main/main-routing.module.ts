@@ -15,6 +15,14 @@ const routes: Routes = [
       {
         path: 'sign',
         loadChildren: () => import('./sign/sign.module').then(m => m.SignModule)
+      },
+      {
+        path: 'shope',
+        loadChildren: () => import('./shope/shope.module').then(m => m.ShopeModule)
+      },
+      {
+        path: 'my',
+        loadChildren: () => import('./my/my.module').then(m => m.MyModule)
       }
     ]
   }

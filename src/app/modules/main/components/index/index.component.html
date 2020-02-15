@@ -39,15 +39,15 @@
       </ng-container>
     </div>
   </TabBarItem>
-  <TabBarItem [title]="'Friend'" [key]="3" [icon]="icon3" [selectedIcon]="icon33">
+  <TabBarItem [title]="'Shope'" [key]="3" [icon]="icon3" [selectedIcon]="icon33">
     <ng-template #icon3>
       <span class="iconfont icon-lipin font-size"></span>
     </ng-template>
     <ng-template #icon33>
       <span class="iconfont icon-lipin font-size focus"></span>
     </ng-template>
-    <div style="background-color: white; height: 100%; text-align: center">
-      <div style="padding-top: 60px">Clicked Friend tab， show Friend information</div>
+    <div *ngIf="selectedIndex === 2" style="background-color: white; height: 100%; text-align: center">
+      <router-outlet name="shope"></router-outlet>
       <ng-container>
         <ng-template [ngTemplateOutlet]="content"></ng-template>
       </ng-container>
@@ -60,8 +60,8 @@
     <ng-template #icon44>
       <span class="iconfont icon-wode font-size focus"></span>
     </ng-template>
-    <div style="background-color: white; height: 100%; text-align: center">
-      <div style="padding-top: 60px">Clicked My tab， show My information</div>
+    <div *ngIf="selectedIndex === 3" style="background-color: white; height: 100%; text-align: center">
+      <router-outlet name="my"></router-outlet>
       <ng-container>
         <ng-template [ngTemplateOutlet]="content"></ng-template>
       </ng-container>

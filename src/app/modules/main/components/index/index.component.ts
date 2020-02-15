@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { RouterOutlet, Router, ActivationStart } from '@angular/router';
+import { RouterOutlet, Router, ActivationStart, ActivatedRoute } from '@angular/router';
+import { NavigationEnum } from '../../data/navigation.enum';
 
 @Component({
   selector: 'app-index',
@@ -27,16 +28,21 @@ export class IndexComponent implements OnInit {
     top: '45px'
   };
 
+  navigation: any = NavigationEnum
+
   selectedIndex: number = 0;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
 
   }
 
   ngOnInit() {
-
+    const url = this.router.url.split('/')
+    const route = url[url.length - 1];
+    this.selectedIndex = this.navigation[route];
   }
 
   tabBarTabOnPress(pressParam: any) {
