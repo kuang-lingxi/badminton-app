@@ -7,6 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
+  userInfo = {
+    imgUrl: 'assets/xiao.jpg',
+    name: 'klx',
+    sex: 1,
+    level: 'A',
+    grade: 50,
+    referee: 1
+  }
+
   constructor() { }
 
   ngOnInit() {

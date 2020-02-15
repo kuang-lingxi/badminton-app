@@ -47,7 +47,8 @@ export class IndexComponent implements OnInit {
 
   tabBarTabOnPress(pressParam: any) {
     this.selectedIndex = pressParam.index;
-    this.router.navigateByUrl(`main/${pressParam.title.toLowerCase()}`)
+    this.router.navigateByUrl(`main/${pressParam.title.toLowerCase()}`);
+    this.title = pressParam.title;
   }
 
 }

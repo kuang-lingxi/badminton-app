@@ -1,1 +1,11 @@
-<p>detail works!</p>
+<List [className]="'my-list'" [renderHeader]="renderHeader">
+  <ListItem [extra]="img">头像</ListItem>
+  <ListItem [extra]="userInfo.name">昵称</ListItem>
+  <ListItem [extra]="userInfo.sex === 0 ? '女' : '男'">性别</ListItem>
+  <ListItem [extra]="userInfo.level">级别</ListItem>
+  <ListItem [extra]="userInfo.grade">积分</ListItem>
+  <ListItem [extra]="userInfo.sex === 0 ? '否' : '是'">裁判认证</ListItem>
+</List>
+<ng-template #img>
+  <img [src]="userInfo.imgUrl" alt="">
+</ng-template>
