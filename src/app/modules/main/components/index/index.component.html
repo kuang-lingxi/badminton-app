@@ -18,20 +18,22 @@
     <ng-template #icon11>
       <span class="iconfont icon-home font-size focus"></span>
     </ng-template>
-    <div style="background-color: white; height: 100%; text-align: center">
+    <div *ngIf="selectedIndex === 0" style="background-color: white; height: 100%; text-align: center">
+      <router-outlet name="home"></router-outlet>
       <ng-container>
         <ng-template [ngTemplateOutlet]="content"></ng-template>
       </ng-container>
     </div>
   </TabBarItem>
-  <TabBarItem [title]="'Koubei'" [key]="2" [icon]="icon2" [selectedIcon]="icon22">
+  <TabBarItem [title]="'Sign'" [key]="2" [icon]="icon2" [selectedIcon]="icon22">
     <ng-template #icon2>
       <span class="iconfont icon-dingwei font-size"></span>
     </ng-template>
     <ng-template #icon22>
       <span class="iconfont icon-dingwei font-size focus"></span>
     </ng-template>
-    <div style="background-color: white; height: 100%; text-align: center">
+    <div *ngIf="selectedIndex === 1" style="background-color: white; height: 100%; text-align: center">
+      <router-outlet name="sign"></router-outlet>
       <ng-container>
         <ng-template [ngTemplateOutlet]="content"></ng-template>
       </ng-container>
@@ -67,5 +69,5 @@
   </TabBarItem>
 </TabBar>
 <ng-template #content>
-  <router-outlet></router-outlet>
+  <!-- <router-outlet></router-outlet> -->
 </ng-template>

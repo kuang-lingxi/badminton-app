@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { RouterOutlet, Router, ActivationStart } from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -24,16 +25,21 @@ export class IndexComponent implements OnInit {
     top: '45px'
   };
 
-  selectedIndex: number = 1;
+  selectedIndex: number = 0;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) {
+
+  }
 
   ngOnInit() {
+
   }
 
   tabBarTabOnPress(pressParam: any) {
-    console.log('onPress Params: ', pressParam);
     this.selectedIndex = pressParam.index;
+    this.router.navigateByUrl(`main/${pressParam.title.toLowerCase()}`)
   }
 
 }
