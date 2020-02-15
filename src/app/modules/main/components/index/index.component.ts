@@ -18,6 +18,8 @@ export class IndexComponent implements OnInit {
 
   unselectedTintColor: string = '#888';
 
+  title: string = "首页";
+  
   tabbarStyle: object = {
     position: 'fixed',
     height: 'calc(100% - 45px)',

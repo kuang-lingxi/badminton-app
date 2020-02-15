@@ -1,1 +1,11 @@
-<p>sign works!</p>
+<List [className]="'my-list'" [renderHeader]="renderHeader">
+  <ListItem [extra]="'签到'" *ngFor="let item of matchList">
+    <span>{{item.name}}</span>
+    <Brief>
+      <div>地点：{{item.address}}</div>
+      <div>签到人数：{{formatPercentage(item.already, item.num)}}</div>
+      <div>开始时间：{{item.begTime | date:"MM/dd hh:mm:ss"}}</div>
+      <div>结束时间：{{item.endTime | date:"MM/dd hh:mm:ss"}}</div>
+    </Brief>
+  </ListItem>    
+</List>
