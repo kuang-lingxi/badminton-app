@@ -12,12 +12,12 @@
   <div class="am-demo-page">
     <div class="am-list" style="margin:30px 0;">
       <div class="am-list-body">
-        <InputItem [placeholder]="'no label'" content="用户名"></InputItem>
-        <InputItem [placeholder]="'title can be icon，image or text'" content="密码"></InputItem>
+        <InputItem [placeholder]="'请输入用户名'" content="用户名" [(ngModel)]="username"></InputItem>
+        <InputItem type="password" [placeholder]="'请输入密码'" content="密码" [(ngModel)]="password"></InputItem>
       </div>
     </div>
   </div>
-  <div Button [type]="'primary'" [inline]="true" [size]="'small'" class="center">登陆</div>
+  <div Button [type]="'primary'" [inline]="true" [size]="'small'" class="center" (click)="login()">登陆</div>
   <div style="text-align: center;">忘记了密码?</div>
   <div class="footer">
     <a href="">还没有账号?点我注册</a>

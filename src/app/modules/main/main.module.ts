@@ -4,6 +4,7 @@ import { SelfCommonModule } from '../common/common.module';
 
 import { MainRoutingModule } from './main-routing.module';
 import { IndexComponent } from './components/index/index.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -11,7 +12,11 @@ import { IndexComponent } from './components/index/index.component';
   imports: [
     CommonModule,
     MainRoutingModule,
-    SelfCommonModule
-  ]
+    SelfCommonModule,
+    HttpClientModule
+  ],
+  providers: [
+    
+  ],
 })
 export class MainModule { }
