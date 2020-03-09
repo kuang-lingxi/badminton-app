@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegisterService } from '../../service/register.service';
 
 const data = [
   {
@@ -22,11 +23,23 @@ export class RegisterComponent implements OnInit {
 
   sexData: string[] = ['男', '女'];
 
-  sex = [];
+  sex = ['男'];
 
   sexText = "男"
 
-  constructor() { }
+  username: string;
+
+  password: string;
+
+  confirm: string;
+
+  name: string;
+
+  schoolNumber: string;
+
+  constructor(
+    private registerService: RegisterService
+  ) { }
 
   ngOnInit() {
   }
@@ -44,7 +57,18 @@ export class RegisterComponent implements OnInit {
 
   sexChange(result) {
     this.sexText = result;
-    console.log(this.sex)
+  }
+
+  register() {
+    console.log(this.username);
+    console.log(this.password);
+    console.log(this.confirm);
+    console.log(this.name);
+    console.log(this.schoolNumber);
+    console.log(this.sex);
+    this.registerService.register(this.username, this.password, this.name, this.schoolNumber, (this.sex[0] === '男' ? 0 : 1)).subscribe(resp => {
+      console.log(resp);
+    })
   }
 
 }
