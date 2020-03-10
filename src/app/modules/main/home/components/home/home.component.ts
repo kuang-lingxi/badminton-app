@@ -59,9 +59,4 @@ export class HomeComponent implements OnInit {
     console.log(event);
   }
 
-  link() {
-    console.log("link");
-    this.router.navigateByUrl("main/home/match/1")
-  }
-
 }

@@ -1,21 +1,3 @@
-<!-- 
-<Carousel
-  [infinite]="true"
-  [vertical]="false"
-  [selectedIndex]="1"
-  [autoplay]="true"
-  [dotStyle]="{'margin-bottom': '5px'}"
-  [dotActiveStyle]="{'margin-bottom': '5px'}"
->
-  <CarouselSlide *ngFor="let item of state.data">
-    <div style="display: inline-block; width: 100%;" [ngStyle]="{ height: state.imgHeight }">
-      <img
-        src="https://zos.alipayobjects.com/rmsportal/{{ item }}.png"
-        style=" pointer-events: none; width: 100%;"
-      />
-    </div>
-  </CarouselSlide>
-</Carousel> -->
 <div style="display: inline-block; width: 100%;" [ngStyle]="{ height: state.imgHeight }">
   <img
     src="https://zos.alipayobjects.com/rmsportal/AiyWuByWklrrUDlFignR.png"
@@ -58,7 +40,7 @@
     >
       <List className="my-list">
         <ListItem>
-          <a (click)="link()">
+          <a routerLink="match/1">
             介绍：{{ item.introduce }}
           </a>
         </ListItem>

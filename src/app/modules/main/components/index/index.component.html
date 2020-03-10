@@ -18,7 +18,6 @@
       <span class="iconfont icon-home font-size focus"></span>
     </ng-template>
     <div *ngIf="selectedIndex === 0" style="background-color: white; height: 100%; text-align: center">
-      <router-outlet></router-outlet>
       <ng-container>
         <ng-template [ngTemplateOutlet]="content"></ng-template>
       </ng-container>
@@ -32,7 +31,6 @@
       <span class="iconfont icon-dingwei font-size focus"></span>
     </ng-template>
     <div *ngIf="selectedIndex === 1" style="background-color: white; height: 100%; text-align: center">
-      <router-outlet></router-outlet>
       <ng-container>
         <ng-template [ngTemplateOutlet]="content"></ng-template>
       </ng-container>
@@ -46,7 +44,6 @@
       <span class="iconfont icon-lipin font-size focus"></span>
     </ng-template>
     <div *ngIf="selectedIndex === 2" style="background-color: white; height: 100%; text-align: center">
-      <router-outlet></router-outlet>
       <ng-container>
         <ng-template [ngTemplateOutlet]="content"></ng-template>
       </ng-container>
@@ -60,7 +57,6 @@
       <span class="iconfont icon-wode font-size focus"></span>
     </ng-template>
     <div *ngIf="selectedIndex === 3" style="background-color: white; height: 100%; text-align: center">
-      <router-outlet></router-outlet>
       <ng-container>
         <ng-template [ngTemplateOutlet]="content"></ng-template>
       </ng-container>
@@ -68,5 +64,5 @@
   </TabBarItem>
 </TabBar>
 <ng-template #content>
-  <!-- <router-outlet></router-outlet> -->
+  <router-outlet></router-outlet>
 </ng-template>
