@@ -40,7 +40,7 @@
     >
       <List className="my-list">
         <ListItem>
-          <a routerLink="match/1">
+          <a [routerLink]="['match', item.id]" (click)="linkDetail()">
             介绍：{{ item.introduce }}
           </a>
         </ListItem>

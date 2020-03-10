@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet, Router, ActivationStart, ActivatedRoute } from '@angular/router';
 import { NavigationEnum } from '../../data/navigation.enum';
+import { DataService } from '../../service/data.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-index',
@@ -34,7 +36,9 @@ export class IndexComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private dataService: DataService,
+    private location: Location
   ) {
 
   }
@@ -48,7 +52,11 @@ export class IndexComponent implements OnInit {
   tabBarTabOnPress(pressParam: any) {
     this.selectedIndex = pressParam.index;
     this.router.navigateByUrl(`main/${pressParam.title.toLowerCase()}`);
-    this.title = pressParam.title;
+    this.dataService.title = pressParam.title;
+    this.dataService.showLeft = false;
   }
 
+  onLeftClick() {
+    this.location.back();
+  }
 }

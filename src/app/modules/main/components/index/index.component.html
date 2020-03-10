@@ -1,6 +1,9 @@
-<Navbar>
-  {{title}}
+<Navbar [icon] = "dataService.showLeft ? icon : ''" (onLeftClick)="dataService.showLeft ? onLeftClick() : ''">
+  {{dataService.title}}
 </Navbar>
+<ng-template #icon>
+  <Icon [type]="'left'"></Icon>
+</ng-template>
 <TabBar
   [barTintColor]="'white'"
   [tintColor]="'#108ee9'"

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../../service/home.service';
 import { Router } from '@angular/router';
+import { DataService } from '../../../service/data.service';
 
 @Component({
   selector: 'app-home',
@@ -35,7 +36,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private homeService: HomeService,
-    private router: Router
+    private router: Router,
+    private dataService: DataService
   ) { }
 
   ngOnInit() {
@@ -57,6 +59,11 @@ export class HomeComponent implements OnInit {
 
   onChange(event) {
     console.log(event);
+  }
+
+  linkDetail() {
+    this.dataService.title = "比赛详情";
+    this.dataService.showLeft = true;
   }
 
 }

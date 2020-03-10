@@ -19,4 +19,8 @@ export class HomeService {
   showMatches(): Observable<Response> {
     return this.http.get<Response>("api/match/show");
   }
+
+  getMatchDetail(id: number): Observable<Response> {
+    return this.http.get<Response>(`api/match/detail?id=${id}`);
+  }
 }
