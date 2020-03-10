@@ -6,7 +6,6 @@ import { SignComponent } from './components/sign/sign.component';
 const routes: Routes = [
   {
     path: '',
-    outlet: 'sign',
     component: SignComponent
   }
 ];

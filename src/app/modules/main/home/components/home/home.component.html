@@ -1,4 +1,4 @@
-
+<!-- 
 <Carousel
   [infinite]="true"
   [vertical]="false"
@@ -15,14 +15,20 @@
       />
     </div>
   </CarouselSlide>
-</Carousel>
+</Carousel> -->
+<div style="display: inline-block; width: 100%;" [ngStyle]="{ height: state.imgHeight }">
+  <img
+    src="https://zos.alipayobjects.com/rmsportal/AiyWuByWklrrUDlFignR.png"
+    style=" pointer-events: none; width: 100%;"
+  />
+</div>
 
 <div class="notice">
   <h4 class="title">
     公告
   </h4>
 
-  <List [className]="'my-list'" [renderHeader]="renderHeader">
+  <List [className]="'my-list'" [renderHeader]="renderHeader" style="height: 200px;overflow: auto;">
     <ng-container *ngFor="let notice of noticeList">
       <ListItem [thumb]="notice.top === 1 ? top : normal" [extra]="'查看'" (click)="modal[notice.id]=true">{{notice.title}}</ListItem>
       <Modal [(ngModel)]="modal[notice.id]" [transparent]="true" [title]="notice.title">
@@ -48,23 +54,20 @@
     <AccordionPanel
       *ngFor="let item of accordions; let i = index"
       [key]="i"
-      [header]="item.title"
+      [header]="item.name"
     >
       <List className="my-list">
         <ListItem>
-          <a href="">
+          <a (click)="link()">
             介绍：{{ item.introduce }}
           </a>
         </ListItem>
         <ListItem>
-          时间：{{ item.beginTime | date:"yyyy/MM/dd" }} - {{ item.endTime | date:"yyyy/MM/dd" }}
+          时间：{{ item.begTime | date:"yyyy/MM/dd" }} - {{ item.endTime | date:"yyyy/MM/dd" }}
         </ListItem>
       </List>
     </AccordionPanel>
   </Accordion>
-  <ng-template #title1>
-    <div>Title 1</div>
-  </ng-template>
 </div>
 <div class="match-list">
 

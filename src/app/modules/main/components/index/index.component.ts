@@ -41,7 +41,7 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     const url = this.router.url.split('/')
-    const route = url[url.length - 1];
+    const route = url[2];
     this.selectedIndex = this.navigation[route];
   }
 

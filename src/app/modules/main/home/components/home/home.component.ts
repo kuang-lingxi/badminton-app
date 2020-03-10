@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeService } from '../../service/home.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -31,9 +33,22 @@ export class HomeComponent implements OnInit {
 
   modal = {0: false, 1: false, 2: false, 3: false,4: false, 5: false}
 
-  constructor() { }
+  constructor(
+    private homeService: HomeService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    this.homeService.showNotices().subscribe(resp => {
+      if(resp.code === 0) {
+        this.noticeList = resp.message.notices;
+      }
+    })
+    this.homeService.showMatches().subscribe(resp => {
+      if(resp.code === 0) {
+        this.accordions = resp.message.matches
+      }
+    })
   }
 
   onClose(id) {
@@ -44,6 +59,9 @@ export class HomeComponent implements OnInit {
     console.log(event);
   }
 
-  
+  link() {
+    console.log("link");
+    this.router.navigateByUrl("main/home/match/1")
+  }
 
 }

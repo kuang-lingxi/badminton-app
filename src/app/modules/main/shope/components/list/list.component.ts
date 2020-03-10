@@ -22,4 +22,8 @@ export class ListComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnDestroy() {
+    
+  }
+
 }

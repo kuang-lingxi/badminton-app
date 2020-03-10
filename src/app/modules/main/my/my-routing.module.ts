@@ -6,7 +6,6 @@ import { DetailComponent } from './components/detail/detail.component';
 const routes: Routes = [
   {
     path: '',
-    outlet: 'my',
     component: DetailComponent
   }
 ];

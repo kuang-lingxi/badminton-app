@@ -1,7 +1,6 @@
 <Navbar>
   {{title}}
 </Navbar>
-
 <TabBar
   [barTintColor]="'white'"
   [tintColor]="'#108ee9'"
@@ -19,7 +18,7 @@
       <span class="iconfont icon-home font-size focus"></span>
     </ng-template>
     <div *ngIf="selectedIndex === 0" style="background-color: white; height: 100%; text-align: center">
-      <router-outlet name="home"></router-outlet>
+      <router-outlet></router-outlet>
       <ng-container>
         <ng-template [ngTemplateOutlet]="content"></ng-template>
       </ng-container>
@@ -33,7 +32,7 @@
       <span class="iconfont icon-dingwei font-size focus"></span>
     </ng-template>
     <div *ngIf="selectedIndex === 1" style="background-color: white; height: 100%; text-align: center">
-      <router-outlet name="sign"></router-outlet>
+      <router-outlet></router-outlet>
       <ng-container>
         <ng-template [ngTemplateOutlet]="content"></ng-template>
       </ng-container>
@@ -47,7 +46,7 @@
       <span class="iconfont icon-lipin font-size focus"></span>
     </ng-template>
     <div *ngIf="selectedIndex === 2" style="background-color: white; height: 100%; text-align: center">
-      <router-outlet name="shope"></router-outlet>
+      <router-outlet></router-outlet>
       <ng-container>
         <ng-template [ngTemplateOutlet]="content"></ng-template>
       </ng-container>
@@ -61,7 +60,7 @@
       <span class="iconfont icon-wode font-size focus"></span>
     </ng-template>
     <div *ngIf="selectedIndex === 3" style="background-color: white; height: 100%; text-align: center">
-      <router-outlet name="my"></router-outlet>
+      <router-outlet></router-outlet>
       <ng-container>
         <ng-template [ngTemplateOutlet]="content"></ng-template>
       </ng-container>
