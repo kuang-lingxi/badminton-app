@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
         if(response.message.result) {
           this.loginService.setCookie("access_token", response.message.token, false);
           this.loginService.setCookie("username", this.username, false);
+          this.loginService.setCookie("uid", response.message.uid);
           this.router.navigateByUrl("/main/home");
         }else {
           const toast = this._toast.fail('用户名或密码错误', 1000);

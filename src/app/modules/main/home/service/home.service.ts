@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Response } from 'src/app/modules/common/data/response';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,5 +23,9 @@ export class HomeService {
 
   getMatchDetail(id: number): Observable<Response> {
     return this.http.get<Response>(`api/match/detail?id=${id}`);
+  }
+
+  getUserDetail(uid: number): Observable<Response> {
+    return this.http.get<Response>(`api/user/detail?uid=${uid}`);
   }
 }
