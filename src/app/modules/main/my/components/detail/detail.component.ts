@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../service/user.service';
+import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-detail',
@@ -7,18 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  userInfo = {
-    imgUrl: 'assets/xiao.jpg',
-    name: 'klx',
-    sex: 1,
-    level: 'A',
-    grade: 50,
-    referee: 1
-  }
+  userInfo: any;
 
-  constructor() { }
+  environment = environment;
+
+  constructor(
+    private userService: UserService,
+    private cookieService: CookieService
+  ) { }
 
   ngOnInit() {
+    const uid = parseInt(this.cookieService.get("uid"));
+    this.userService.getUserDetail(uid).subscribe(resp => {
+      if(resp.code === 0) {
+        this.userInfo = resp.message.detail;
+      }
+    });
+  }
+
+  referee() {
+    const uid = this.cookieService.get("uid");
+    window.location.href = `${this.environment.managementUrl}/enroll/referee?uid=${uid}`;
   }
 
 }

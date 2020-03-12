@@ -1,11 +1,26 @@
-<List [className]="'my-list'" [renderHeader]="renderHeader">
-  <ListItem [extra]="img">头像</ListItem>
-  <ListItem [extra]="userInfo.name">昵称</ListItem>
-  <ListItem [extra]="userInfo.sex === 0 ? '女' : '男'">性别</ListItem>
-  <ListItem [extra]="userInfo.level">级别</ListItem>
-  <ListItem [extra]="userInfo.grade">积分</ListItem>
-  <ListItem [extra]="userInfo.sex === 0 ? '否' : '是'">裁判认证</ListItem>
-</List>
-<ng-template #img>
-  <img [src]="userInfo.imgUrl" alt="">
-</ng-template>
+<div *ngIf="userInfo">
+  <List [className]="'my-list'" [renderHeader]="renderHeader">
+    <ListItem [extra]="img">头像</ListItem>
+    <ListItem [extra]="userInfo.username">昵称</ListItem>
+    <ListItem [extra]="userInfo.name">姓名</ListItem>
+    <ListItem [extra]="userInfo.schoolNumber">学号</ListItem>
+    <ListItem [extra]="userInfo.email || '暂无'">邮箱</ListItem>
+    <ListItem [extra]="userInfo.sex === 0 ? '男' : '女'">性别</ListItem>
+    <ListItem [extra]="userInfo.level">级别</ListItem>
+    <ListItem [extra]="userInfo.grade || '暂无'">积分</ListItem>
+    <ListItem [extra]="userInfo.referee === 0 ? '点击认证' : '已认证'" (onClick)="userInfo.referee ? '' : referee()">裁判认证</ListItem>
+    <Card>
+      <CardHeader
+        [title]="'自我介绍'"
+        [thumbStyle]="thumbStyle"
+      >
+      </CardHeader>
+      <CardBody>
+        <div>{{userInfo.introduce || '暂无'}}</div>
+      </CardBody>
+    </Card>
+  </List>
+  <ng-template #img>
+    <img [src]="userInfo.imgUrl" alt="">
+  </ng-template>
+</div>

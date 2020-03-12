@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HomeService } from '../../service/home.service';
 import { ModalService } from 'ng-zorro-antd-mobile';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-match-detail',
@@ -19,6 +20,8 @@ export class MatchDetailComponent implements OnInit {
   id: number;
 
   detail: any;
+
+  environment = environment;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -44,7 +47,7 @@ export class MatchDetailComponent implements OnInit {
   showCustom() {
     this._modal.alert('选择打开方式', '是否使用本账号进行报名？', [
       { text: '否', onPress: () => {
-        window.location.href = `http://localhost:4201/enroll/${this.id}`
+        window.location.href = `${this.environment.managementUrl}/enroll/${this.id}`
       } },
       {
         text: '是',
@@ -52,7 +55,7 @@ export class MatchDetailComponent implements OnInit {
           const uid: number = parseInt(this.cookieService.get("uid"))          
           this.homeService.getUserDetail(uid).subscribe(resp => {
             if(resp.code === 0) {
-              window.location.href = `http://localhost:4201/enroll/${this.id}?schoolNumber=${resp.message.detail.schoolNumber}`;
+              window.location.href = `${this.environment.managementUrl}/enroll/${this.id}?schoolNumber=${resp.message.detail.schoolNumber}`;
             }
           })
         },
@@ -62,6 +65,11 @@ export class MatchDetailComponent implements OnInit {
         }
       }
     ]);
+  }
+
+  referee() {
+    const uid = this.cookieService.get("uid");
+    window.location.href = `${this.environment.managementUrl}/enroll/referee?uid=${uid}`;
   }
 
 }
