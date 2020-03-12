@@ -68,8 +68,26 @@ export class MatchDetailComponent implements OnInit {
   }
 
   referee() {
-    const uid = this.cookieService.get("uid");
-    window.location.href = `${this.environment.managementUrl}/enroll/referee?uid=${uid}`;
+    this._modal.alert('选择打开方式', '是否使用本账号进行报名？', [
+      { text: '否', onPress: () => {
+        window.location.href = `${this.environment.managementUrl}/enroll/refereeMatch?id=${this.id}`;
+      } },
+      {
+        text: '是',
+        onPress: () => {
+          const uid: number = parseInt(this.cookieService.get("uid"))          
+          this.homeService.getUserDetail(uid).subscribe(resp => {
+            if(resp.code === 0) {
+              window.location.href = `${this.environment.managementUrl}/enroll/refereeMatch?id=${this.id}&schoolNumber=${resp.message.detail.schoolNumber}`;
+            }
+          })
+        },
+        style: {
+          color: '#ffffff',
+          background: '#00ff00'
+        }
+      }
+    ]);
   }
 
 }
