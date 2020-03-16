@@ -17,8 +17,8 @@ const routes: Routes = [
         loadChildren: () => import('./sign/sign.module').then(m => m.SignModule)
       },
       {
-        path: 'shope',
-        loadChildren: () => import('./shope/shope.module').then(m => m.ShopeModule)
+        path: 'referee',
+        loadChildren: () => import('./referee/referee.module').then(m => m.RefereeModule)
       },
       {
         path: 'my',
