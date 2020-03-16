@@ -1,5 +1,5 @@
 <List [className]="'my-list'" [renderHeader]="renderHeader">
-  <ListItem [extra]="'签到'" *ngFor="let item of matchList">
+  <ListItem [arrow]="'horizontal'" *ngFor="let item of matchList" (onClick)="open(item.id)">
     <span>{{item.name}}</span>
     <Brief>
       <div>地点：{{item.address}}</div>
