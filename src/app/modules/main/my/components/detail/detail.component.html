@@ -19,6 +19,7 @@
         <div>{{userInfo.introduce || '暂无'}}</div>
       </CardBody>
     </Card>
+    <ListItem [arrow]="'horizontal'" (onClick)="feedback()">用户反馈</ListItem>
   </List>
   <ng-template #img>
     <img [src]="userInfo.imgUrl" alt="">

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../service/user.service';
+import { UserService } from '../../service/user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../../../../environments/environment';
 
@@ -31,6 +31,10 @@ export class DetailComponent implements OnInit {
   referee() {
     const uid = this.cookieService.get("uid");
     window.location.href = `${this.environment.managementUrl}/enroll/referee?uid=${uid}`;
+  }
+
+  feedback() {
+    
   }
 
 }
