@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { SignService } from '../../service/sign.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-sign',
@@ -10,21 +12,22 @@ import { Router } from '@angular/router';
 export class SignComponent implements OnInit {
 
   matchList = [
-    {id: 0, name: '3v3趣味赛', already: 3, num: 10, begTime: 1580808088000, endTime:1580808088000, address: '体育馆'},
-    {id: 0, name: '3v3趣味赛', already: 3, num: 10, begTime: 1580808088000, endTime:1580808088000, address: '体育馆'},
-    {id: 0, name: '3v3趣味赛', already: 3, num: 10, begTime: 1580808088000, endTime:1580808088000, address: '体育馆'},
-    {id: 0, name: '3v3趣味赛', already: 3, num: 10, begTime: 1580808088000, endTime:1580808088000, address: '体育馆'},
-    {id: 0, name: '3v3趣味赛', already: 3, num: 10, begTime: 1580808088000, endTime:1580808088000, address: '体育馆'},
-    {id: 0, name: '3v3趣味赛', already: 3, num: 10, begTime: 1580808088000, endTime:1580808088000, address: '体育馆'},
-    {id: 0, name: '3v3趣味赛', already: 3, num: 10, begTime: 1580808088000, endTime:1580808088000, address: '体育馆'}
+    
   ]
 
   constructor(
-    private router: Router
+    private router: Router,
+    private signService: SignService,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit() {
-
+    const uid = parseInt(this.cookieService.get("uid"));
+    this.signService.joinMatch(uid).subscribe(resp => {
+      if(resp.code === 0) {
+        this.matchList = resp.message.matchList;
+      }
+    })
   }
 
   getPosition() {
