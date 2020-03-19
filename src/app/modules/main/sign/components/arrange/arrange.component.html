@@ -1,6 +1,6 @@
 <List [className]="'my-list'" [renderHeader]="renderHeader">
-  <ListItem (onClick)="sign()">
-    非常牛逼的队伍1-非常牛的的队伍2
-    <Brief>比赛场地：六号场</Brief>
+  <ListItem>
+    {{message.matchName}}/{{message.roundName}}/{{message.team1}} 对阵 {{message.team2}}
+    <Brief>比赛场地：{{message.address}} 裁判：{{message.referee}}</Brief>
   </ListItem> 
 </List>

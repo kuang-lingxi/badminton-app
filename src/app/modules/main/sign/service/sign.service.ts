@@ -15,4 +15,12 @@ export class SignService {
   joinMatch(uid: number): Observable<Response> {
     return this.http.get<Response>(`api/match/userMatch?uid=${uid}`);
   }
+
+  getUserMatch(uid: number, matchId: number): Observable<Response> {
+    return this.http.get<Response>(`api/match/arrange?uid=${uid}&matchId=${matchId}`);
+  }
+
+  getMatch(matchId: number):Observable<Response> {
+    return this.http.get<Response>(`api/match/detail?id=${matchId}`);
+  }
 }

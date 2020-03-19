@@ -3,6 +3,7 @@ import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 import { SignService } from '../../service/sign.service';
 import { CookieService } from 'ngx-cookie-service';
+import { ToastService } from 'ng-zorro-antd-mobile';
 
 @Component({
   selector: 'app-sign',
@@ -18,7 +19,8 @@ export class SignComponent implements OnInit {
   constructor(
     private router: Router,
     private signService: SignService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private _toast: ToastService
   ) { }
 
   ngOnInit() {
@@ -46,8 +48,15 @@ export class SignComponent implements OnInit {
   }
 
   open(id: number) {
-    console.log(id);
-    this.router.navigateByUrl(`/main/sign/operate/${id}`);
+    this.signService.getMatch(id).subscribe(resp => {
+      if(resp.code === 0) {
+        if(resp.message.detail.status !== 0) {
+          this.router.navigateByUrl(`/main/sign/operate/${id}`);
+        }else {
+          const toast = this._toast.fail('该比赛暂未开启', 1000);
+        }
+      }
+    })
   }
 
 }
