@@ -1,8 +1,8 @@
 <h3>待裁比赛列表</h3>
 
-<List [className]="'my-list'" [renderHeader]="renderHeader">
-  <ListItem (onClick)="referee()" [arrow]="'horizontal'">
-    非常牛逼的队伍1-非常牛的的队伍2
-    <Brief>比赛场地：六号场</Brief>
+<List [className]="'my-list'" [renderHeader]="renderHeader" *ngFor="let item of list">
+  <ListItem (onClick)="referee(item.id)" [arrow]="'horizontal'">
+    {{item.matchName}}/{{item.roundName}}/{{item.team1}}对阵{{item.team2}}
+    <Brief>比赛场地：{{item.address}} 裁判：{{item.refereeName}}</Brief>
   </ListItem> 
 </List>

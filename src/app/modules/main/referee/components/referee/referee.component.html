@@ -6,15 +6,18 @@
     <span  class="name">非常牛的的队伍2</span>
   </div>
   <div>
-    <span class="num">11</span>
+    <span class="num">{{num1}}</span>
     :
-    <span  class="num">12</span>
+    <span  class="num">{{num2}}</span>
   </div>
   <div>
-    <span class="iconfont icon-jiahao font-size"></span>
-    <span class="iconfont icon-jiahao font-size"></span>
+    <span class="iconfont icon-jiahao font-size" (click)="change1('add')"></span>
+    <span class="iconfont icon-jiahao font-size" (click)="change2('add')"></span>
+    <br>
+    <span class="iconfont icon-jianhao font-size" (click)="change1('low')"></span>
+    <span class="iconfont icon-jianhao font-size" (click)="change2('low')"></span>
   </div>
 </div>
 <WingBlank>
-  <div Button [type]="'primary'">提交</div>
+  <div Button [type]="'primary'" (click)="submit()">提交</div>
 </WingBlank>
