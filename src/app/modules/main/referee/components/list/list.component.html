@@ -1,7 +1,11 @@
 <h3>待裁比赛列表</h3>
 
-<List [className]="'my-list'" [renderHeader]="renderHeader" *ngFor="let item of list">
-  <ListItem (onClick)="referee(item.id)" [arrow]="'horizontal'">
+<List [className]="'my-list'" [renderHeader]="renderHeader">
+  <ListItem *ngIf="list.length === 0">
+    暂无待裁的比赛
+    <Brief>目前暂时没有给您分配裁判任务～先休息一下吧～</Brief>
+  </ListItem> 
+  <ListItem (onClick)="referee(item.id)" [arrow]="'horizontal'" *ngFor="let item of list">
     {{item.matchName}}/{{item.roundName}}/{{item.team1}}对阵{{item.team2}}
     <Brief>比赛场地：{{item.address}} 裁判：{{item.refereeName}}</Brief>
   </ListItem> 

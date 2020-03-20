@@ -16,7 +16,7 @@ export class ListComponent implements OnInit {
     private cookieService: CookieService
   ) { }
 
-  list: any;
+  list: any = [];
 
   ngOnInit() {
     const uid = parseInt(this.cookieService.get("uid"));

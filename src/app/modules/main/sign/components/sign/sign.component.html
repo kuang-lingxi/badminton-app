@@ -1,4 +1,10 @@
 <List [className]="'my-list'" [renderHeader]="renderHeader">
+  <ListItem *ngIf="matchList.length === 0">
+    <span>暂无待签到列表</span>
+    <Brief>
+      您目前没有正在进行中的比赛，快去报名参赛吧～
+    </Brief>
+  </ListItem>  
   <ListItem [arrow]="'horizontal'" *ngFor="let item of matchList" (onClick)="open(item.id)">
     <span>{{item.name}}</span>
     <Brief>
