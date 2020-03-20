@@ -1,4 +1,4 @@
-<Navbar [icon] = "dataService.showLeft ? icon : ''" (onLeftClick)="dataService.showLeft ? onLeftClick() : ''">
+<Navbar [icon] = "dataService.showLeft ? icon : ''" (onLeftClick)="dataService.showLeft ? dataService.back() : ''">
   {{dataService.title}}
 </Navbar>
 <ng-template #icon>

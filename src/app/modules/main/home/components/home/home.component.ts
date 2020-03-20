@@ -62,8 +62,7 @@ export class HomeComponent implements OnInit {
   }
 
   linkDetail() {
-    this.dataService.title = "比赛详情";
-    this.dataService.showLeft = true;
+    this.dataService.go("比赛详情", true);
   }
 
 }
