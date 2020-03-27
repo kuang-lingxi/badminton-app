@@ -3,6 +3,7 @@ import { RouterOutlet, Router, ActivationStart, ActivatedRoute } from '@angular/
 import { NavigationEnum } from '../../data/navigation.enum';
 import { DataService } from '../../service/data.service';
 import { Location } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-index',
@@ -38,9 +39,10 @@ export class IndexComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private dataService: DataService,
-    private location: Location
+    private location: Location,
+    private cookieService: CookieService
   ) {
-
+    
   }
 
   ngOnInit() {

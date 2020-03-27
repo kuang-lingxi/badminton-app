@@ -23,9 +23,10 @@ export class LoginService {
 
   setCookie(key: string, value: string, remember: boolean = false) {
     if(remember) {
-      this.cookieService.set(key, value, 7 * 24 * 60 * 60 * 1000);
-    }else {
       this.cookieService.set(key, value);
+    }else {
+      document.cookie = `${key}=${value}`;
+      // this.cookieService.set(key, value);
     }
   }
 }
