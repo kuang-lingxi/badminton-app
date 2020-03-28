@@ -1,0 +1,20 @@
+<h4>团体赛对阵表选择</h4>
+<WhiteSpace></WhiteSpace>
+<ListItem
+  *ngFor="let item of type; let i = index"
+  Picker
+  [extra]="valueList[i].length > 0 ? valueList[i][0] : '选择'"
+  [arrow]="'horizontal'"
+  [cascade]="false"
+  [data]="data"
+  [title]="'选择'+item.text"
+  [(ngModel)]="valueList[i]"
+>
+  {{item.text}}
+</ListItem>
+
+<WhiteSpace></WhiteSpace>
+
+<WingBlank>
+  <div Button [type]="'primary'" (click)="submit()">提交</div>
+</WingBlank>

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SignComponent } from './components/sign/sign.component';
 import { OperateComponent } from './components/operate/operate.component';
 import { ArrangeComponent } from './components/arrange/arrange.component';
+import { AgainstComponent } from './components/against/against.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'arrange/:id',
     component: ArrangeComponent
+  },
+  {
+    path: 'against/:id',
+    component: AgainstComponent
   }
 ];
 
