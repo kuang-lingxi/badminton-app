@@ -6,5 +6,9 @@
   <ListItem [arrow]="'horizontal'" (onClick)="arrange()">
     查看对阵表
     <Brief>点击查看对阵表</Brief>
+  </ListItem>  
+  <ListItem [arrow]="'horizontal'" (onClick)="people()" *ngIf="showAgainst">
+    人员排列
+    <Brief>点击安排对阵方案</Brief>
   </ListItem>   
 </List>

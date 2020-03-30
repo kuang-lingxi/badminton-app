@@ -50,11 +50,11 @@ export class SignComponent implements OnInit {
   open(id: number) {
     this.signService.getMatch(id).subscribe(resp => {
       if(resp.code === 0) {
-        if(resp.message.detail.status !== 0) {
+        // if(resp.message.detail.status !== 0) {
           this.router.navigateByUrl(`/main/sign/operate/${id}`);
-        }else {
-          const toast = this._toast.fail('该比赛暂未开启', 1000);
-        }
+        // }else {
+        //   const toast = this._toast.fail('该比赛暂未开启', 1000);
+        // }
       }
     })
   }

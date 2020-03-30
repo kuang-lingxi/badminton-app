@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalService } from 'ng-zorro-antd-mobile';
+import { SignService } from '../../service/sign.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-operate',
@@ -11,15 +13,31 @@ export class OperateComponent implements OnInit {
 
   id: number;
 
+  uid: number;
+
+  showAgainst: boolean = false;
+
+  teamId: number;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private _modal: ModalService,
-    private router: Router
+    private router: Router,
+    private signService: SignService,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit() {
     this.id = parseInt(this.activatedRoute.snapshot.paramMap.get("id"));
-    console.log(this.id);
+    this.uid = parseInt(this.cookieService.get("uid"));
+    this.signService.against(this.id, this.uid).subscribe(resp => {
+      if(resp.code === 0) {
+        if(resp.message.result) {
+          this.showAgainst = resp.message.result;
+          this.teamId = resp.message.teamId;
+        }
+      }
+    })
   }
 
   sign() {
@@ -42,5 +60,9 @@ export class OperateComponent implements OnInit {
 
   arrange() {
     this.router.navigateByUrl(`/main/sign/arrange/${this.id}`);
+  }
+
+  people() {
+    this.router.navigateByUrl(`/main/sign/against/${this.id}?teamId=${this.teamId}`);
   }
 }

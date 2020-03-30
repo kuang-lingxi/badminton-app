@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastService } from 'ng-zorro-antd-mobile';
+import { ActivatedRoute } from '@angular/router';
+import { SignService } from '../../service/sign.service';
 
 @Component({
   selector: 'app-against',
@@ -16,17 +18,13 @@ export class AgainstComponent implements OnInit {
 
   map = {
 
-  }
+  };
+
+  matchId: number;
+
+  teamId: number;
 
   peopleList = [
-    {uid: 0, name: 'klx1'},
-    {uid: 1, name: 'klx2'},
-    {uid: 2, name: 'klx3'},
-    {uid: 3, name: 'klx4'},
-    {uid: 4, name: 'klx5'},
-    {uid: 5, name: 'klx6'},
-    {uid: 6, name: 'klx7'},
-    {uid: 7, name: 'klx8'}
   ]
 
   type = [
@@ -45,14 +43,29 @@ export class AgainstComponent implements OnInit {
   ]
 
   constructor(
-    private _toast: ToastService
+    private _toast: ToastService,
+    private activatedRoute: ActivatedRoute,
+    private signService: SignService
   ) { }
 
   ngOnInit() {
-    this.peopleList.forEach(people => {
-      this.data.push(people.name);
+    this.matchId = parseInt(this.activatedRoute.snapshot.paramMap.get("id"));
+    this.teamId = parseInt(this.activatedRoute.snapshot.queryParamMap.get("teamId"));
+    this.signService.getPeopleList(this.teamId).subscribe(resp => {
+      if(resp.code === 0) {
+        this.peopleList = resp.message.userList;
+        this.peopleList.forEach(people => {
+          this.data.push(people.name);
+        })
+      }
     })
-    this.dataInit([]);
+
+    this.signService.getMatchType(this.matchId).subscribe(resp => {
+      if(resp.code === 0) {
+        this.type = resp.message.matchType;
+        this.dataInit(this.type);
+      }
+    })
   }
 
   find(name) {
@@ -82,13 +95,6 @@ export class AgainstComponent implements OnInit {
   }
 
   dataInit(oldType) {
-    oldType = [
-      {type: 0, text: '男单', num: 1},
-      {type: 1, text: '女单', num: 1},
-      {type: 2, text: '男双', num: 2},
-      {type: 3, text: '女双', num: 2},
-      {type: 4, text: '混双', num: 2},
-    ]
     this.oldType = oldType;
     oldType.forEach(item => {
       if(item.num > 1) {

@@ -23,4 +23,16 @@ export class SignService {
   getMatch(matchId: number):Observable<Response> {
     return this.http.get<Response>(`api/match/detail?id=${matchId}`);
   }
+
+  against(matchId: number, uid: number): Observable<Response> {
+    return this.http.get<Response>(`api/match/against?matchId=${matchId}&uid=${uid}`);
+  }
+
+  getPeopleList(teamId: number): Observable<Response> {
+    return this.http.get<Response>(`api/match/peopleList?teamId=${teamId}`);
+  }
+
+  getMatchType(matchId: number): Observable<Response> {
+    return this.http.get<Response>(`api/match/getMatchType?matchId=${matchId}`);
+  }
 }
