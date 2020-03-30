@@ -62,8 +62,8 @@ export class AgainstComponent implements OnInit {
 
     this.signService.getMatchType(this.matchId).subscribe(resp => {
       if(resp.code === 0) {
-        this.type = resp.message.matchType;
-        this.dataInit(this.type);
+        this.oldType = resp.message.matchType;
+        this.dataInit([...this.oldType]);
       }
     })
   }
@@ -82,11 +82,19 @@ export class AgainstComponent implements OnInit {
     userList = [...new Set(userList)];
     if(userList.length === this.valueList.length) {
       this.oldType.forEach((item, index) => {
+        let temp;
         if(item.num > 1) {
-          console.log({type: item.type, user: this.find(this.valueList[index][0])+"-"+this.find(this.valueList[index+1][0]), num: item.num})
+          temp = {type: item.type, user: this.find(this.valueList[index][0])+"-"+this.find(this.valueList[index+1][0]), num: item.num, teamId: this.teamId}
         }else {
-          console.log({type: item.type, user: this.find(this.valueList[index][0]), num: 1})
+          temp = {type: item.type, user: this.find(this.valueList[index][0]), num: 1, teamId: this.teamId}
         }
+        this.signService.teamAgainst({...temp}).subscribe(resp => {
+          if(resp.code === 0) {
+            if(resp.message.result) {
+              this._toast.success("提交成功！")
+            }
+          }
+        });
       })
     }else {
       this._toast.fail("人选不能重复, 请重试");
@@ -106,7 +114,6 @@ export class AgainstComponent implements OnInit {
         this.valueList.push([]);
       }
     })
-
   }
 
 }

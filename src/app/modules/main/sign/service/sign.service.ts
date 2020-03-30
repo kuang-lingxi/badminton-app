@@ -35,4 +35,9 @@ export class SignService {
   getMatchType(matchId: number): Observable<Response> {
     return this.http.get<Response>(`api/match/getMatchType?matchId=${matchId}`);
   }
+
+  teamAgainst(params): Observable<Response> {
+
+    return this.http.post<Response>("api/match/teamAgainst", params);
+  }
 }
