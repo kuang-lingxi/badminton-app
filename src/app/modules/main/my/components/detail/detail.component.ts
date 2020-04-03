@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../../../../environments/environment';
+import { Location } from '@angular/common';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detail',
@@ -16,7 +19,9 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -35,6 +40,10 @@ export class DetailComponent implements OnInit {
 
   feedback() {
     
+  }
+
+  signOut() {
+    this.router.navigateByUrl('/login');
   }
 
 }
