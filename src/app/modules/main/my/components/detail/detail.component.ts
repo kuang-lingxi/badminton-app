@@ -46,4 +46,8 @@ export class DetailComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
+  history() {
+    this.router.navigateByUrl('/main/my/history')
+  }
+
 }

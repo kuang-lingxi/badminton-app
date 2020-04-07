@@ -1,1 +1,21 @@
-<p>history works!</p>
+<div class="match-list">
+  <Accordion>
+    <AccordionPanel
+      *ngFor="let item of matchList; let i = index"
+      [key]="i"
+      [header]="item.name+'('+item.type+')'"
+    >
+      <List className="my-list">
+        <ListItem>
+          赛事结果：{{item.prize}}
+        </ListItem>
+        <ListItem *ngFor="let match of item.matchDetail">
+          <p>{{match.roundText}}：{{match.arrange}}</p>
+          <p>结果：{{match.result}}</p>
+          <p>场地：{{match.address}}</p>
+          <p>裁判：{{match.referee}}</p>
+        </ListItem>
+      </List>
+    </AccordionPanel>
+  </Accordion>
+</div>

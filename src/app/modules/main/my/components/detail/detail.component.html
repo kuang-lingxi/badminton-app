@@ -19,7 +19,7 @@
         <div>{{userInfo.introduce || '暂无'}}</div>
       </CardBody>
     </Card>
-    <ListItem [arrow]="'horizontal'" (onClick)="signOut()">参赛记录</ListItem>
+    <ListItem [arrow]="'horizontal'" (onClick)="history()">参赛记录</ListItem>
     <ListItem [arrow]="'horizontal'" (onClick)="feedback()">用户反馈</ListItem>
     <ListItem [arrow]="'horizontal'" (onClick)="signOut()">注销</ListItem>
   </List>
