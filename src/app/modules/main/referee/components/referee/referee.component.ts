@@ -16,6 +16,10 @@ export class RefereeComponent implements OnInit {
 
   id: number;
 
+  refereeMessage;
+
+  max: number;
+
   constructor(
     private activeRoute: ActivatedRoute,
     private _modal: ModalService,
@@ -25,7 +29,10 @@ export class RefereeComponent implements OnInit {
 
   ngOnInit() {
     this.id = parseInt(this.activeRoute.snapshot.paramMap.get("id"));
-
+    this.max = parseInt(this.activeRoute.snapshot.queryParamMap.get("max"));
+    this.refereeService.getMatchResult(this.id).subscribe(resp => {
+      this.refereeMessage = resp
+    })
   }
 
   change1(op: string) {
@@ -34,6 +41,8 @@ export class RefereeComponent implements OnInit {
     }else if(op === 'low' && this.num1 > 0){
       this.num1--;
     }
+
+    this.check();
   }
 
   change2(op: string) {
@@ -42,6 +51,8 @@ export class RefereeComponent implements OnInit {
     }else if(op === 'low' && this.num2 > 0){
       this.num2--;
     }
+
+    this.check();
   }
 
   submit() {
@@ -68,6 +79,19 @@ export class RefereeComponent implements OnInit {
         }
       }
     ]);
+  }
+
+  check() {
+    console.log("check")
+    if(this.num1 === this.max || this.num2 === this.max) {
+      this.refereeService.updateResult(this.id, `${this.num1}-${this.num2}`).subscribe(resp => {
+        if(resp.code === 0) {
+          this._toast.success("比赛结束！", 5000);  
+          this.change1 = function(){};
+          this.change2 = function(){};
+        }
+      })
+    }
   }
 
 }

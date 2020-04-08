@@ -24,3 +24,23 @@
   margin-top: 30vh;
   transform: translateY(-50%);
 }
+
+.left {
+  width: 50%;
+  height: 100%;
+  background-color: green;
+  float: left;
+}
+
+.right {
+  width: 50%;
+  height: 100%;
+  background-color: blue;
+  float: left;
+}
+
+.grade {
+  color: white;
+  font-weight: bold;
+  font-size: 10rem;
+}

@@ -1,5 +1,5 @@
-<h1>3v3趣味赛</h1>
-<div class="middle">
+<!-- <h1>3v3趣味赛</h1> -->
+<!-- <div class="middle">
   <div style="margin:10px 0">
     <span class="name">非常牛逼的队伍1</span>
     :
@@ -17,7 +17,19 @@
     <span class="iconfont icon-jianhao font-size" (click)="change1('low')"></span>
     <span class="iconfont icon-jianhao font-size" (click)="change2('low')"></span>
   </div>
-</div>
-<WingBlank>
+</div> -->
+
+<!-- <WingBlank>
   <div Button [type]="'primary'" (click)="submit()">提交</div>
-</WingBlank>
+</WingBlank> -->
+
+<ng-container *ngIf="refereeMessage">
+  <div class="left" (click)="change1('add')">
+    <h1>{{refereeMessage.team1}}</h1>
+    <div class="grade">{{num1}}</div>
+  </div>
+  <div class="right" (click)="change2('add')">
+    <h1>{{refereeMessage.team2}}</h1>
+    <div class="grade">{{num2}}</div>
+  </div>
+</ng-container>

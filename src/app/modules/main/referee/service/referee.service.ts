@@ -23,4 +23,8 @@ export class RefereeService {
     }
     return this.http.post<Response>("api/match/updateResult", params);
   }
+
+  getMatchResult(id: number) {
+    return this.http.get(`api/match/matchResult?id=${id}`);
+  }
 }
