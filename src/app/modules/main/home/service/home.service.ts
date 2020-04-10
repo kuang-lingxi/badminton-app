@@ -28,4 +28,8 @@ export class HomeService {
   getUserDetail(uid: number): Observable<Response> {
     return this.http.get<Response>(`api/user/detail?uid=${uid}`);
   }
+
+  getImg() {
+    return this.http.get(`api/notice/homeImg`);
+  }
 }

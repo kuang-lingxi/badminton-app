@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
     imgHeight: '184px'
   };
 
+  imgUrl: string;
+
   activeKey = [1];
 
   accordions: Array<any> = [
@@ -50,6 +52,10 @@ export class HomeComponent implements OnInit {
       if(resp.code === 0) {
         this.accordions = resp.message.matches
       }
+    })
+    this.homeService.getImg().subscribe((resp: any) => {
+      this.imgUrl = resp.imgUrl;
+      console.log(this.imgUrl);
     })
   }
 
