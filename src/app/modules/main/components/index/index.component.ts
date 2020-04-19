@@ -56,6 +56,7 @@ export class IndexComponent implements OnInit {
     this.router.navigateByUrl(`main/${pressParam.title.toLowerCase()}`);
     this.dataService.title = pressParam.title;
     this.dataService.showLeft = false;
+    this.dataService.clear(pressParam.title, false);
   }
 
   onLeftClick() {

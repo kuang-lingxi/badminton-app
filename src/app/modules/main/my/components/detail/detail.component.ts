@@ -5,6 +5,7 @@ import { environment } from '../../../../../../environments/environment';
 import { Location } from '@angular/common';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { DataService } from '../../../service/data.service';
 
 @Component({
   selector: 'app-detail',
@@ -21,7 +22,8 @@ export class DetailComponent implements OnInit {
     private userService: UserService,
     private cookieService: CookieService,
     private location: Location,
-    private router: Router
+    private router: Router,
+    private dataServer: DataService
   ) { }
 
   ngOnInit() {
@@ -47,6 +49,7 @@ export class DetailComponent implements OnInit {
   }
 
   history() {
+    this.dataServer.go("参赛记录", true);
     this.router.navigateByUrl('/main/my/history')
   }
 

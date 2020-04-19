@@ -1,5 +1,5 @@
 <List [className]="'my-list'" [renderHeader]="renderHeader">
-  <ListItem>
+  <ListItem *ngIf="message">
     {{message.matchName}}/{{message.roundName}}/{{message.team1}} 对阵 {{message.team2}}
     <Brief>比赛场地：{{message.address}} 裁判：{{message.referee}}</Brief>
   </ListItem> 

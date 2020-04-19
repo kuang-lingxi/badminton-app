@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalService } from 'ng-zorro-antd-mobile';
 import { SignService } from '../../service/sign.service';
 import { CookieService } from 'ngx-cookie-service';
+import { DataService } from '../../../service/data.service';
 
 @Component({
   selector: 'app-operate',
@@ -24,7 +25,8 @@ export class OperateComponent implements OnInit {
     private _modal: ModalService,
     private router: Router,
     private signService: SignService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private dataServer: DataService
   ) { }
 
   ngOnInit() {
@@ -59,10 +61,12 @@ export class OperateComponent implements OnInit {
   }
 
   arrange() {
+    this.dataServer.go("对阵表", true);
     this.router.navigateByUrl(`/main/sign/arrange/${this.id}`);
   }
 
   people() {
+    this.dataServer.go("人员排列", true);
     this.router.navigateByUrl(`/main/sign/against/${this.id}?teamId=${this.teamId}`);
   }
 }

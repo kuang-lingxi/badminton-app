@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../../service/register.service';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 const data = [
   {
@@ -38,7 +40,8 @@ export class RegisterComponent implements OnInit {
   schoolNumber: string;
 
   constructor(
-    private registerService: RegisterService
+    private registerService: RegisterService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -60,14 +63,8 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    console.log(this.username);
-    console.log(this.password);
-    console.log(this.confirm);
-    console.log(this.name);
-    console.log(this.schoolNumber);
-    console.log(this.sex);
     this.registerService.register(this.username, this.password, this.name, this.schoolNumber, (this.sex[0] === '男' ? 0 : 1)).subscribe(resp => {
-      console.log(resp);
+      this.router.navigateByUrl('/main');
     })
   }
 

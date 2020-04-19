@@ -1,6 +1,6 @@
 <div style="display: inline-block; width: 100%;" [ngStyle]="{ height: state.imgHeight }">
   <img
-    [src]="imgUrl"
+    [src]="imgUrl ? imgUrl : ''"
     style=" pointer-events: none; width: 100%;"
   />
 </div>

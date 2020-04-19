@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SignService } from '../../service/sign.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastService } from 'ng-zorro-antd-mobile';
+import { DataService } from '../../../service/data.service';
 
 @Component({
   selector: 'app-sign',
@@ -20,7 +21,8 @@ export class SignComponent implements OnInit {
     private router: Router,
     private signService: SignService,
     private cookieService: CookieService,
-    private _toast: ToastService
+    private _toast: ToastService,
+    private dataServer: DataService
   ) { }
 
   ngOnInit() {
@@ -48,6 +50,7 @@ export class SignComponent implements OnInit {
   }
 
   open(id: number) {
+    this.dataServer.go("赛事操作", true);
     this.signService.getMatch(id).subscribe(resp => {
       if(resp.code === 0) {
         // if(resp.message.detail.status !== 0) {

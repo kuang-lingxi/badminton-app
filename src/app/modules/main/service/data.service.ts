@@ -32,4 +32,11 @@ export class DataService {
     this.title = title;
     this.showLeft = showLeft;
   }
+
+  clear(title: string, showLeft: boolean) {
+    this.titleList = [title];
+    this.leftList = [showLeft];
+    this.title = title;
+    this.showLeft = showLeft;
+  }
 }
