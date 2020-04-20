@@ -53,4 +53,58 @@ export class DetailComponent implements OnInit {
     this.router.navigateByUrl('/main/my/history')
   }
 
+  level(grade) {
+    if(grade < 100) {
+      return "D";
+    }else if(grade < 200) {
+      return "C";
+    }else if(grade < 300) {
+      return "C+";
+    }else if(grade < 400) {
+      return "B";
+    }else if(grade < 500) {
+      return "B+";
+    }else if(grade < 600) {
+      return "A";
+    }else {
+      return "A+";
+    }
+  }
+
+  operate = {
+    'username': () => {
+      this.dataServer.type = 'username';
+      this.dataServer.textarea = false;
+      this.dataServer.go('修改用户名', true);
+      this.dataServer.isSubmit = true;
+    },
+    'email': () => {
+      this.dataServer.type = 'email';
+      this.dataServer.textarea = false;
+      this.dataServer.go('修改电子邮箱', true);
+      this.dataServer.isSubmit = true;
+    },
+    'introduce': () => {
+      this.dataServer.type = 'introduce';
+      this.dataServer.textarea = true;
+      this.dataServer.go('修改自我介绍', true);
+      this.dataServer.isSubmit = true;
+    },
+    'feedback': () => {
+      this.dataServer.type = 'feedback';
+      this.dataServer.textarea = true;
+      this.dataServer.go('用户反馈', true);
+      this.dataServer.isSubmit = true;
+    }
+  }
+
+  navigate(url: string, type: string) {
+    this.router.navigateByUrl(url);
+  }
+
+  change(type: string) {
+    this.operate[type]();
+    this.navigate("main/my/change", type);
+  }
+
 }

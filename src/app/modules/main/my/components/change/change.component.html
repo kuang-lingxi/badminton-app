@@ -1,0 +1,15 @@
+
+<TextareaItem 
+  *ngIf="!dataService.textarea" 
+  [(ngModel)]="dataService.value"
+  style="border: 1px solid #efefef"
+  [count]="100">
+</TextareaItem>
+<TextareaItem 
+  [rows]="5" 
+  [count]="100" 
+  [(ngModel)]="dataService.value"
+  style="border: 1px solid #efefef"
+  *ngIf="dataService.textarea"
+>
+</TextareaItem>

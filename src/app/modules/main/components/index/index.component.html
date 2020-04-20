@@ -1,8 +1,11 @@
-<Navbar [icon] = "dataService.showLeft ? icon : ''" (onLeftClick)="dataService.showLeft ? dataService.back() : ''">
+<Navbar [rightContent]="dataService.isSubmit ? rightContent : ''" [icon] = "dataService.showLeft ? icon : ''" (onLeftClick)="dataService.showLeft ? dataService.back() : ''">
   {{dataService.title}}
 </Navbar>
 <ng-template #icon>
   <Icon [type]="'left'"></Icon>
+</ng-template>
+<ng-template #rightContent>
+  <div (click)="dataService.submit()">提交</div>
 </ng-template>
 <TabBar
   [barTintColor]="'white'"

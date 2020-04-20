@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DetailComponent } from './components/detail/detail.component';
 import { HistoryComponent } from './components/history/history.component';
+import { ChangeComponent } from './components/change/change.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'history',
     component: HistoryComponent
+  },
+  {
+    path: 'change',
+    component: ChangeComponent
   }
 ];
 

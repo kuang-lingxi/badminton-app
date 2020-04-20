@@ -10,7 +10,7 @@
     公告
   </h4>
 
-  <List [className]="'my-list'" [renderHeader]="renderHeader" style="height: 200px;overflow: auto;">
+  <List [className]="'my-list'" [renderHeader]="renderHeader" style="max-height: 200px;overflow: auto;">
     <ng-container *ngFor="let notice of noticeList">
       <ListItem [thumb]="notice.top === 1 ? top : normal" [extra]="'查看'" (click)="modal[notice.id]=true">{{notice.title}}</ListItem>
       <Modal [(ngModel)]="modal[notice.id]" [transparent]="true" [title]="notice.title">
@@ -20,6 +20,7 @@
         </div>
       </Modal>
     </ng-container>
+    <ListItem *ngIf="noticeList.length === 0">暂无公告</ListItem>
   </List>
   <ng-template #top>
     <span class="iconfont icon-zhiding"></span>
@@ -49,6 +50,9 @@
         </ListItem>
       </List>
     </AccordionPanel>
+    <ListItem *ngIf="accordions.length === 0">
+      暂无赛事
+    </ListItem>
   </Accordion>
 </div>
 <div class="match-list">

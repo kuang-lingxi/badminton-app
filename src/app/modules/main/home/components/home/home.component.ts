@@ -20,9 +20,7 @@ export class HomeComponent implements OnInit {
   activeKey = [1];
 
   accordions: Array<any> = [
-    { title: '3v3趣味赛', introduce: '3v3趣味赛介绍', beginTime: 1580808088000, endTime: 1580808088000},
-    { title: '3v3趣味赛', introduce: '3v3趣味赛介绍', beginTime: 1580808088000, endTime: 1580808088000},
-    { title: '3v3趣味赛', introduce: '3v3趣味赛介绍', beginTime: 1580808088000, endTime: 1580808088000}
+
   ];
 
   noticeList = [
@@ -50,12 +48,11 @@ export class HomeComponent implements OnInit {
     })
     this.homeService.showMatches().subscribe(resp => {
       if(resp.code === 0) {
-        this.accordions = resp.message.matches
+        this.accordions = resp.message.matches;
       }
     })
     this.homeService.getImg().subscribe((resp: any) => {
       this.imgUrl = resp.imgUrl;
-      console.log(this.imgUrl);
     })
   }
 
