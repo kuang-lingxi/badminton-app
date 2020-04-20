@@ -48,7 +48,8 @@ export class HomeComponent implements OnInit {
     })
     this.homeService.showMatches().subscribe(resp => {
       if(resp.code === 0) {
-        this.accordions = resp.message.matches;
+        console.log(resp.message.matches);
+        this.accordions = (resp.message.matches).filter(item => item.status != -1);
       }
     })
     this.homeService.getImg().subscribe((resp: any) => {
