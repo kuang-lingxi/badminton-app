@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../../service/register.service';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { ToastService } from 'ng-zorro-antd-mobile';
 
 const data = [
   {
@@ -41,7 +42,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private registerService: RegisterService,
-    private router: Router
+    private router: Router,
+    private _toast: ToastService
   ) { }
 
   ngOnInit() {
@@ -64,7 +66,9 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.registerService.register(this.username, this.password, this.name, this.schoolNumber, (this.sex[0] === '男' ? 0 : 1)).subscribe(resp => {
-      this.router.navigateByUrl('/main');
+      this._toast.success('注册成功！', 1000, () => {
+        this.router.navigateByUrl('/login');
+      })
     })
   }
 
