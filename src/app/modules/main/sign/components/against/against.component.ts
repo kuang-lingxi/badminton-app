@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastService } from 'ng-zorro-antd-mobile';
 import { ActivatedRoute } from '@angular/router';
 import { SignService } from '../../service/sign.service';
+import { DataService } from '../../../service/data.service';
 
 @Component({
   selector: 'app-against',
@@ -45,7 +46,8 @@ export class AgainstComponent implements OnInit {
   constructor(
     private _toast: ToastService,
     private activatedRoute: ActivatedRoute,
-    private signService: SignService
+    private signService: SignService,
+    private dataService: DataService
   ) { }
 
   ngOnInit() {
@@ -91,7 +93,8 @@ export class AgainstComponent implements OnInit {
         this.signService.teamAgainst({...temp}).subscribe(resp => {
           if(resp.code === 0) {
             if(resp.message.result) {
-              this._toast.success("提交成功！")
+              this._toast.success("提交成功！");
+              this.dataService.back();
             }
           }
         });

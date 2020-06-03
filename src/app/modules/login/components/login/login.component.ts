@@ -34,6 +34,8 @@ export class LoginComponent implements OnInit {
         }else {
           const toast = this._toast.fail('用户名或密码错误', 1000);
         }
+      }else {
+        const toast = this._toast.fail('您已被禁止登录，请联系管理员解除限制', 1000);
       }
     })
   }

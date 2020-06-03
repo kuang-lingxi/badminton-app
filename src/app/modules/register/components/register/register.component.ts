@@ -65,10 +65,23 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    if(this.password !== this.confirm) {
+      this._toast.fail("两次输入的密码不一致!");
+
+      return ;
+    }
+
+    let regx = /^[0-9]{10}$/;
+
+    if(!regx.test(this.schoolNumber)) {
+      this._toast.fail("学号只能为10位数字!");
+
+      return ;
+    }
     this.registerService.register(this.username, this.password, this.name, this.schoolNumber, (this.sex[0] === '男' ? 0 : 1)).subscribe(resp => {
-      this._toast.success('注册成功！', 1000, () => {
-        this.router.navigateByUrl('/login');
-      })
+      // this._toast.success('注册成功！', 1000, () => {
+      //   this.router.navigateByUrl('/login');
+      // })
     })
   }
 
